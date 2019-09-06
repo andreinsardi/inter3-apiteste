@@ -59,15 +59,18 @@ Obs: Git é o sistema de versionamento de arquivos Github é o repositório onli
       - git push origin <funcionalidade_x>
 
 ### Atualizar e mesclar (merge):
-
-para atualizar seu repositório local com a mais nova versão, execute de dentro da pasta do projeto
+    para atualizar seu repositório local com a mais nova versão, execute de dentro da pasta do projeto
      - git pull
 
-sua pasta de trabalho para obter e fazer merge (mesclar) alterações remotas. Para fazer merge de um outro branch ao seu branch ativo (ex. master), use:
+     sua pasta de trabalho para obter e fazer merge (mesclar) alterações remotas.<br>
+     para fazer merge de um outro branch ao seu branch ativo (ex. master), use
      - git merge <branch>
 
-em ambos os casos o git tenta fazer o merge das alterações automaticamente. Infelizmente, isto nem sempre é possível e resulta em conflitos. Você é responsável por fazer o merge estes conflitos manualmente editando os arquivos exibidos pelo git. Depois de alterar, você precisa marcá-los como merged com
+     em ambos os casos o git tenta fazer o merge das alterações automaticamente. Infelizmente, isto nem sempre é possível <br> 
+     e resulta em conflitos. Você é responsável por fazer o merge estes conflitos manualmente editando os arquivos 
+     <br>
+     exibidos pelo git. Depois de alterar, você precisa marcá-los como merged com
       - git add <arquivo>
 
-antes de fazer o merge das alterações, você pode também pré-visualizá-as usando
+     antes de fazer o merge das alterações, você pode também pré-visualizá-as usando
      - git diff <branch origem> <branch destino>
