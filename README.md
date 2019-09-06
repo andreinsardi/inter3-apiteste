@@ -66,7 +66,7 @@ Obs: Git é o sistema de versionamento de arquivos Github é o repositório onli
         <p>para fazer merge de um outro branch ao seu branch ativo (ex. master), use<p/>*/
      - git merge <branch>
 
-     /*em ambos os casos o git tenta fazer o merge das alterações automaticamente. Infelizmente, isto nem sempre é <p>possível e resulta em conflitos. Você é responsável por fazer o merge estes conflitos manualmente editando os<p/> <p>arquivos exibidos pelo git. Depois de alterar, você precisa marcá-los como merged com<p/>*/
+     em ambos os casos o git tenta fazer o merge das alterações automaticamente. Infelizmente, isto nem sempre é <p>possível e resulta em conflitos. Você é responsável por fazer o merge estes conflitos manualmente editando os<p/> <p>arquivos exibidos pelo git. Depois de alterar, você precisa marcá-los como merged com<p/>
       - git add <arquivo>
 
       /*antes de fazer o merge das alterações, você pode também pré-visualizá-as usando*/
