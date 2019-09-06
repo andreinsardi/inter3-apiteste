@@ -1,0 +1,3 @@
+﻿- CSS, Bootstrap, JavaScript, jQuery
+- Partial views
+- Sisteminha! :)

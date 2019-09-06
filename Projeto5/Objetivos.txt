@@ -1,0 +1,4 @@
+﻿- Conhecer outras formas de receber dados de uma controller (além dos arquivos cshtml)
+- Começar a trabalhar com herança de classes em MVC
+- Entender como forçar o download de um arquivo
+- Ter uma primeira visão sobre API's REST

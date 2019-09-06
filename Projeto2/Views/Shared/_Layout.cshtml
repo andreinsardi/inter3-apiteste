@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title>Projeto 2</title>
+
+	@RenderSection("Cabecalho", false)
+
+</head>
+<body>
+
+	<!-- Um comentário no Layout -->
+
+	@RenderBody()
+
+	<environment include="Development">
+		<p>* Versão de desenvolvimento! Cuidado! Bugs podem morar aqui perto...</p>
+	</environment>
+	<environment exclude="Development">
+		<p>* Versão de produção! Garantido: sem bugs!!!</p>
+	</environment>
+</body>
+</html>

@@ -1,0 +1,146 @@
+﻿@model Pessoa
+
+@{
+	bool valido = (Model != null || ViewBag.Criando == true);
+}
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalEditar">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<form id="formEditar">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">@(ViewBag.Criando == true ? "Nova Pessoa" : "Editar Pessoa")</h4>
+				</div>
+				<div class="modal-body">
+					@if (Model == null && ViewBag.Criando != true) {
+
+						<div class="alert alert-danger no-margin-bottom">
+							Pessoa não encontrada! 😢
+						</div>
+
+					} else {
+
+						<div class="hidden" id="divMensagem"></div>
+
+						<div class="hidden" id="divAguarde">Aguarde...</div>
+
+						<input type="hidden" id="Id" name="Id" value="@(Model == null ? 0 : Model.Id)" />
+
+						<div class="form-group">
+							<label for="Nome">Nome</label>
+							<input type="text" name="Nome" id="Nome" class="form-control" spellcheck="false" value="@(Model == null ? "" : Model.Nome)" />
+						</div>
+
+						<div class="form-group">
+							<label for="Nascimento">Nascimento</label>
+							<input type="text" name="Nascimento" id="Nascimento" class="form-control" spellcheck="false" value="@(Model == null ? "" : Model.Nascimento.ToString(" dd/MM/yyyy"))" />
+						</div>
+
+						<div class="form-group">
+							<label for="Peso">Peso</label>
+							<input type="text" name="Peso" id="Peso" class="form-control" spellcheck="false" value="@(Model == null ? "" : Model.Peso.ToString("0.00"))" />
+						</div>
+
+						<div class="form-group">
+							<label for="Foto">
+								Foto
+								@if (ViewBag.Criando != true) {
+									<i class="fa fa-info-circle" id="tooltipFoto" data-toggle="tooltip" data-placement="top" data-html="true" title="" data-title="Deixe em branco para não alterar a foto existente"></i>
+								}
+							</label>
+							<input type="file" accept="image/jpeg" name="Foto" id="Foto" class="form-control" />
+						</div>
+
+					}
+				</div>
+				<div class="modal-footer">
+					@if (valido) {
+						<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> @(ViewBag.Criando == true ? "Criar" : "Salvar")</button>
+					}
+					<button type="button" class="btn btn-default btn-outline" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$("#modalEditar").modal({
+		backdrop: "static",
+		keyboard: false
+	});
+
+	$("#tooltipFoto").tooltip();
+
+	prepareDatePicker("#Nascimento");
+
+	$("#Peso").mask("#0,00", { reverse: true });
+
+	// Para mais opções, ver https://jqueryvalidation.org/documentation/
+	$("#formEditar").validate({
+		rules: {
+			Nome: {
+				required: true,
+				minlength: 5
+			},
+
+			Nascimento: {
+				required: true
+			},
+
+			Peso: {
+				required: true
+			}
+		},
+
+		submitHandler: function (form) {
+			if ($.active) {
+				return;
+			}
+
+			document.getElementById("divMensagem").className = "hidden";
+			document.getElementById("divAguarde").className = "text-center";
+
+			$.ajax({
+				url: "@Url.Action("Gravar")",
+				cache: false,
+				method: "post",
+				data: new FormData(document.getElementById("formEditar")),
+				contentType: false,
+				processData: false,
+				error: function (request) {
+					document.getElementById("divAguarde").className = "hidden";
+
+					var mensagem = request.responseText;
+
+					if (!mensagem) {
+						mensagem = "Ocorreu um erro desconhecido!";
+					}
+
+					var div = document.getElementById("divMensagem");
+					div.textContent = mensagem;
+					div.className = "alert alert-danger";
+				},
+				success: function (dados) {
+					document.getElementById("divAguarde").className = "hidden";
+
+					var div = document.getElementById("divMensagem");
+					@if (ViewBag.Criando == true) {
+						<text>
+							div.textContent = "Pessoa criada com sucesso!";
+							$("#formEditar").trigger("reset").validate().resetForm();
+						</text>
+					} else {
+						<text>
+							div.textContent = "Alterações salvas com sucesso!";
+						</text>
+					}
+					div.className = "alert alert-success";
+
+					atualizarLista();
+				}
+			});
+		}
+	});
+</script>

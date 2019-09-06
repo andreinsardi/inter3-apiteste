@@ -1,0 +1,21 @@
+﻿@using Projeto4.Models
+@{
+	ViewBag.Titulo = "Projeto 4";
+}
+
+<h1>Um título</h1>
+<p>Oi mundo!</p>
+
+@{
+	// O @using no topo da página era para nos permitir utilizar a classe Pessoa aqui
+	// A variável pessoa é para evitar ficar repetindo ViewBag.pessoa o tempo todo ;)
+	Pessoa pessoa = ViewBag.pessoa;
+}
+
+@if (pessoa == null) {
+	<p>Sem pessoa!</p>
+} else {
+	<p>Id: @pessoa.Id</p>
+	<p>Nome: @pessoa.Nome</p>
+	<p>Peso: @pessoa.Peso</p>
+}

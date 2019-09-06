@@ -1,0 +1,27 @@
+﻿@{
+	ViewBag.Titulo = "Projeto 3";
+}
+
+<h1>Um título</h1>
+<p>Oi mundo! Recebemos a seguinte descrição: @ViewBag.Descricao</p>
+
+@if (ViewBag.Liberado == true) {
+	<p>Seu acesso está liberado!</p>
+} else {
+	<p>Acesso proibido!</p>
+}
+
+@for (int contador = 0; contador < ViewBag.QuantidadeDeRepeticoes; contador++) {
+	// Essa região é código em C#, repararam que até o comentário mudou?
+	// Para efetivamente escrever algo no HTML, devemos uma uma tag qualquer, como p ou div
+	// Mas, professor, e se eu realmente quisesse escrever algo que não fosse uma tag...?!?!
+	// Bem... aí você precisaria utilizar uma tag especial ;)
+
+	<text>Isso não é uma tag!</text>
+
+	if (contador % 2 == 0) {
+		<p>Par @contador</p>
+	} else {
+		<p>Ímpar @contador</p>
+	}
+}

@@ -1,0 +1,30 @@
+﻿@model List<Pessoa>
+
+<table class="table table-striped table-hover table-row-pointer" id="tabela">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Id</th>
+			<th>Nome</th>
+			<th>Nascimento</th>
+			<th>Peso</th>
+			<th data-orderable="false"></th>
+			<th data-orderable="false"></th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model != null) {
+			foreach (Pessoa pessoa in Model) {
+				<tr>
+					<td class="col-min"><img alt="Foto" src="@Url.Action("ObterFotoPessoa", new { id = pessoa.Id })" height="75" /></td>
+					<td>@pessoa.Id</td>
+					<td>@pessoa.Nome</td>
+					<td>@pessoa.Nascimento.ToString("dd/MM/yyyy")</td>
+					<td>@pessoa.Peso</td>
+					<td class="col-min"><button class="btn btn-outline btn-primary" onclick="editar(@pessoa.Id)" title="Editar"><i class="fa fa-edit"></i></button></td>
+					<td class="col-min"><button class="btn btn-outline btn-danger" onclick="excluir(@pessoa.Id, this)" title="Excluir"><i class="fa fa-times"></i></button></td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>

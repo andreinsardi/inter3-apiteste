@@ -1,0 +1,123 @@
+﻿@{
+	ViewBag.Titulo = "Projeto 6";
+}
+
+<div class="container-fluid">
+	<h1>Um título</h1>
+	<div class="panel panel-default">
+		<div class="panel-body text-center">
+			Informações legais, que o usuário não irá ler 😁
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">Um Cabeçalho Legal</div>
+		<div class="panel-body">
+
+			<div class="row">
+
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label for="cbOpcoes">
+							Opções
+							<i class="fa fa-info-circle" id="tooltipInfo" data-toggle="tooltip" data-placement="top" data-html="true" title="" data-title="Info, linha 1<br/>Linha 2"></i>
+						</label>
+						<select id="cbOpcoes" class="form-control" size="1">
+							<option value="" selected="selected">Selecione...</option>
+							<option value="1">Instalar</option>
+							<option value="2">Não Instalar</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label for="txtNome">
+							Nome
+						</label>
+						<input id="txtNome" class="form-control" type="text" spellcheck="false" />
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label for="txtCEP">
+							CEP
+						</label>
+						<input id="txtCEP" class="form-control" type="text" spellcheck="false" />
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label for="txtData">
+							Data
+						</label>
+						<input id="txtData" class="form-control" type="text" spellcheck="false" />
+					</div>
+				</div>
+
+			</div>
+
+			<div class="panel panel-default no-margin-bottom" style="display: none;" id="tabelaPainel">
+				<div class="panel-body dataTable_wrapper">
+					<table class="table table-striped table-hover table-row-pointer" id="tabela">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Nome</th>
+								<th>Endereço</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>Teste</td>
+								<td>Rua Teste, 45</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Teste 2</td>
+								<td>Rua Teste 2, 45</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>Teste 3</td>
+								<td>Rua Teste 3, 45</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+	<script type="text/javascript">
+		$("#tooltipInfo").tooltip();
+
+		// https://igorescobar.github.io/jQuery-Mask-Plugin/
+		$("#txtCEP").mask("00000-000");
+
+		prepareDatePicker("#txtData");
+
+		prepareDataTable("#tabela", {
+			// Para iniciar não ordenando
+			//order: [],
+
+			// Para iniciar ordernando pela segunda coluna
+			order: [
+				[1, "asc"]
+			],
+
+			// Para mais opções, ver https://datatables.net
+		});
+
+		// O style="display: none;" e esse show() são para deixar a tabela escondida
+		// antes dela estar completamente pronta!
+		$("#tabelaPainel").show();
+
+	</script>
+}

@@ -1,0 +1,3 @@
+﻿- Entender o _ViewStart.cshtml
+- Entender o conceito de layout, o arquivo _Layout.cshtml e os comandos RenderBody e RenderSection
+- Conhecer a tag <environment>

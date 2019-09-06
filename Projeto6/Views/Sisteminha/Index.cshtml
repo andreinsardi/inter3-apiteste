@@ -1,0 +1,224 @@
+﻿@model List<Pessoa>
+@{
+	ViewBag.Titulo = "Sisteminha";
+}
+
+<div class="container-fluid">
+	<h1>Um título</h1>
+
+	<div class="panel panel-default no-margin-bottom">
+		<div class="panel-heading clearfix">
+			<div class="pull-left">
+				Pessoas do Sistema
+			</div>
+			<div class="pull-right">
+				<button type="button" class="btn btn-outline btn-primary btn-xs" onclick="criar()"><i class="fa fa-plus-circle"></i> Nova Pessoa</button>
+			</div>
+		</div>
+		<div class="panel-body dataTable_wrapper" id="tabelaContainer" style="display: none;">
+
+			<partial name="_Listar.cshtml" model="Model" />
+
+		</div>
+	</div>
+
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalExcluir">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Oops...</h4>
+			</div>
+			<div class="modal-body" id="modalExcluirCorpo"></div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" onclick="confirmarExclusao()"><i class="fa fa-check"></i> Excluir</button>
+				<button type="button" class="btn btn-default btn-outline" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalErro">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Oops...</h4>
+			</div>
+			<div class="modal-body">
+				<div class="alert alert-danger no-margin-bottom" id="modalErroCorpo"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-outline" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modalPlaceholder"></div>
+
+@section Scripts {
+	<script type="text/javascript">
+
+		var idParaExcluir, exclusaoConfirmada;
+
+		function prepararLista() {
+			prepareDataTable("#tabela", {
+				// Para iniciar não ordenando
+				//order: [],
+
+				// Para iniciar ordernando pela segunda coluna
+				order: [
+					[1, "asc"]
+				],
+
+				// Para mais opções, ver https://datatables.net
+			});
+			$("#tabelaContainer").show();
+		}
+
+		function atualizarLista() {
+			$.ajax({
+				url: "@Url.Action("Listar")",
+				cache: false,
+				method: "get",
+				error: function (request) {
+					var mensagem = request.responseText;
+
+					if (!mensagem) {
+						mensagem = "Ocorreu um erro desconhecido!";
+					}
+
+					document.getElementById("modalErroCorpo").textContent = mensagem;
+
+					$("#modalErro").modal({
+						backdrop: "static",
+						keyboard: false
+					});
+				},
+				success: function (dados) {
+					$("#tabelaContainer").hide();
+					$("#tabelaContainer").html(dados);
+					prepararLista();
+					$("#tabelaContainer").show();
+				}
+			});
+		}
+
+		function criar() {
+			if ($.active) {
+				return;
+			}
+
+			$.ajax({
+				url: "@Url.Action("Criar")",
+				cache: false,
+				method: "get",
+				error: function (request) {
+					var mensagem = request.responseText;
+
+					if (!mensagem) {
+						mensagem = "Ocorreu um erro desconhecido!";
+					}
+
+					document.getElementById("modalErroCorpo").textContent = mensagem;
+
+					$("#modalErro").modal({
+						backdrop: "static",
+						keyboard: false
+					});
+				},
+				success: function (dados) {
+					$("#modalPlaceholder").html(dados);
+				}
+			});
+		}
+
+		function editar(id) {
+			if ($.active) {
+				return;
+			}
+
+			$.ajax({
+				url: "@Url.Action("Editar")",
+				cache: false,
+				method: "get",
+				data: { id: id },
+				error: function (request) {
+					var mensagem = request.responseText;
+
+					if (!mensagem) {
+						mensagem = "Ocorreu um erro desconhecido!";
+					}
+
+					document.getElementById("modalErroCorpo").textContent = mensagem;
+
+					$("#modalErro").modal({
+						backdrop: "static",
+						keyboard: false
+					});
+				},
+				success: function (dados) {
+					$("#modalPlaceholder").html(dados);
+				}
+			});
+		}
+
+		function excluir(id, botaoClicado) {
+			if ($.active) {
+				return;
+			}
+
+			idParaExcluir = id;
+			exclusaoConfirmada = false;
+			var tr = botaoClicado.parentNode.parentNode;
+			var celulas = tr.getElementsByTagName("td");
+
+			document.getElementById("modalExcluirCorpo").textContent = "Deseja mesmo excluir a pessoa \"" + celulas[1].textContent + "\"?";
+
+			$("#modalExcluir").modal({
+				backdrop: "static",
+				keyboard: false
+			});
+		}
+
+		function confirmarExclusao() {
+			exclusaoConfirmada = true;
+			$("#modalExcluir").modal("hide");
+		}
+
+		$("#modalExcluir").on("hidden.bs.modal", function () {
+			if ($.active || !exclusaoConfirmada) {
+				return;
+			}
+
+			$.ajax({
+				url: "@Url.Action("Excluir")",
+				cache: false,
+				method: "get",
+				data: { id: idParaExcluir },
+				error: function (request) {
+					var mensagem = request.responseText;
+
+					if (!mensagem) {
+						mensagem = "Ocorreu um erro desconhecido!";
+					}
+
+					document.getElementById("modalErroCorpo").textContent = mensagem;
+
+					$("#modalErro").modal({
+						backdrop: "static",
+						keyboard: false
+					});
+				},
+				success: function (dados) {
+					atualizarLista();
+				}
+			});
+		});
+
+		prepararLista();
+	</script>
+}
