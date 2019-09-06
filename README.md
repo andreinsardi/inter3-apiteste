@@ -58,7 +58,7 @@ o comando "git commit" garente o versionamento NÃO garente que os arquivos est�
       - git push origin <funcionalidade_x>
 
 ### Atualizar e mesclar (merge):
-    /*para atualizar seu repositório local com a mais nova versão, execute de dentro da pasta do projeto*/
+     /*para atualizar seu repositório local com a mais nova versão, execute de dentro da pasta do projeto*/
      - git pull
 
      /* sua pasta de trabalho para obter e fazer merge (mesclar) alterações remotas.

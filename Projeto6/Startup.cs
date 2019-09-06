@@ -38,7 +38,7 @@ namespace Projeto6 {
 			app.UseMvc(routes => {
 				routes.MapRoute(
 					name: "default",
-					template: "{controller=Home}/{action=Index}");
+					template: "{controller=Sisteminha}/{action=Index}");
 			});
 
 			// Algo como C:\Users\Aluno\Desktop\Projeto\Projeto6

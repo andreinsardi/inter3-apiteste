@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "restore": {
+    "/Volumes/HDMemory-/source/ESPM/inter3/inter3-apiteste/Projeto3/Projeto3.csproj": {}
+  },
+  "projects": {
+    "/Volumes/HDMemory-/source/ESPM/inter3/inter3-apiteste/Projeto3/Projeto3.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Volumes/HDMemory-/source/ESPM/inter3/inter3-apiteste/Projeto3/Projeto3.csproj",
+        "projectName": "Projeto3",
+        "projectPath": "/Volumes/HDMemory-/source/ESPM/inter3/inter3-apiteste/Projeto3/Projeto3.csproj",
+        "packagesPath": "/Users/andre/.nuget/packages/",
+        "outputPath": "/Volumes/HDMemory-/source/ESPM/inter3/inter3-apiteste/Projeto3/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/andre/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.1, )",
+              "autoReferenced": true
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
