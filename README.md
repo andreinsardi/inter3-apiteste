@@ -1,6 +1,5 @@
 # inter3-apiteste
 
-## teste push
 
 Material de consulta para projeto interdisciplinar 
 
