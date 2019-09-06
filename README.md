@@ -31,7 +31,7 @@ Aqui algumas referências  que podem te ajudar!
      - git commit -m "comentários das alterações"
 
 Obs: Git é o sistema de versionamento de arquivos Github é o repositório online para guardar estes arquivos 
-o comando "git commit" garente o versionamento NÃO garente que os arquivos estão no Github
+<p> comando "git commit" garente o versionamento NÃO garente que os arquivos estão no Github<p/>
 
 ### Fazendo upload dos arquivos:
     /*Faz upload na master*/
@@ -63,10 +63,10 @@ o comando "git commit" garente o versionamento NÃO garente que os arquivos est�
      - git pull
 
      /* sua pasta de trabalho para obter e fazer merge (mesclar) alterações remotas.
-        para fazer merge de um outro branch ao seu branch ativo (ex. master), use*/
+        <p>para fazer merge de um outro branch ao seu branch ativo (ex. master), use<p/>*/
      - git merge <branch>
 
-     /*em ambos os casos o git tenta fazer o merge das alterações automaticamente. Infelizmente, isto nem sempre é possível e resulta em conflitos. Você é responsável por fazer o merge estes conflitos manualmente editando os arquivos exibidos pelo git. Depois de alterar, você precisa marcá-los como merged com*/
+     /*em ambos os casos o git tenta fazer o merge das alterações automaticamente. Infelizmente, isto nem sempre é <p>possível e resulta em conflitos. Você é responsável por fazer o merge estes conflitos manualmente editando os<p/> <p>arquivos exibidos pelo git. Depois de alterar, você precisa marcá-los como merged com<p/>*/
       - git add <arquivo>
 
       /*antes de fazer o merge das alterações, você pode também pré-visualizá-as usando*/
