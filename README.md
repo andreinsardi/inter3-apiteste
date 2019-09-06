@@ -14,10 +14,10 @@ Aqui algumas referências  que podem te ajudar!
 ---------------------------------
 
 ### Obtenha um repositório
-crie uma cópia de trabalho em um repositório local executando o comando
+    /*crie uma cópia de trabalho em um repositório local executando o comando*/
      - git clone /caminho/para/o/repositório
 
-quando usar um servidor remoto, seu comando será
+    /*quando usar um servidor remoto, seu comando será*/
     - git clone usuário@servidor:/caminho/para/o/repositório
 
 ---------------------------------
