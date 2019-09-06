@@ -43,7 +43,8 @@ o comando "git commit" garente o versionamento NÃO garente que os arquivos est�
 
     /*Quando você está trabalhando em equipe e mais de uma pessoa altera o mesmo projeto, é recomendável que cada alteração tenha sua própria Branch*/
 
-    /*Branches ("ramos") são utilizados para desenvolver funcionalidades isoladas umas das outras. O branch master é o branch "padrão" quando você cria um repositório. Use outros branches para desenvolver e mescle-os (merge) ao branch master após a conclusão. */
+    /*Branches ("ramos") são utilizados para desenvolver funcionalidades isoladas umas das outras. O branch master é o
+    <p> branch "padrão" quando você cria um repositório. Use outros branches para desenvolver e mescle-os (merge) ao <p/> branch master após a conclusão. */
 
     /*crie um novo branch chamado "funcionalidade_x" e selecione-o usando*/
      - git checkout -b funcionalidade_x
