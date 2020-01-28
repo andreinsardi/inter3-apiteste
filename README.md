@@ -60,6 +60,9 @@ o comando "git commit" garente o versionamento NÃO garente que os arquivos est�
      /*um branch não está disponível a outros a menos que você envie o branch para seu repositório remoto*/
       - git push origin <funcionalidade_x>
 
+     /*baixar codigo de uma branch específica*/
+      - git pull origin <funcionalidade_x>
+
 ### Atualizar e mesclar (merge):
      /*para atualizar seu repositório local com a mais nova versão, execute de dentro da pasta do projeto*/
      - git pull
